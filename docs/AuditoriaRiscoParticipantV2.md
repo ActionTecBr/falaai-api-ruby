@@ -7,6 +7,9 @@
 | **interlocutor** | **String** | Speaker label | [optional] |
 | **name** | **String** | Participant name | [optional] |
 | **role** | **String** | Role (agent/client/bot/unknown) | [optional] |
+| **confidence** | **String** | Role inference confidence (high/medium/low) | [optional] |
+| **source** | **String** | Role source (input/inferred) | [optional] |
+| **evidence** | **String** | Role inference evidence | [optional] |
 
 ## Example
 
@@ -16,7 +19,10 @@ require 'falaai-api'
 instance = FalaAI::AuditoriaRiscoParticipantV2.new(
   interlocutor: null,
   name: null,
-  role: null
+  role: null,
+  confidence: null,
+  source: null,
+  evidence: null
 )
 ```
 

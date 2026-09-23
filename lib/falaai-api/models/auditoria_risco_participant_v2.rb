@@ -1,7 +1,7 @@
 =begin
 #FalaAI API
 
-#Transcribe, diagnose and score calls with 3 simple endpoints.  **Endpoints:** - `POST /v1/audio/transcriptions` — Audio to text - `POST /v1/analyze/diagnostic` — Conversation analysis - `POST /v1/analyze/auditoriaRisco` — Compliance audit  **Complete flow (Python):** ```python import httpx  API = 'https://api.fala.ai' KEY = 'fai_xxx' HD = {'Authorization': f'Bearer {KEY}'}  # 1. Transcribe files = {'file': open('call.mp3', 'rb')} resp = httpx.post(f'{API}/v1/audio/transcriptions', headers=HD, files=files, data={'model': 'falaai-transcribe-1', 'language': 'pt'}) tr = resp.json() print(f'Text: {tr[\"text\"][:100]}...')  # 2. Diagnose resp = httpx.post(f'{API}/v1/analyze/diagnostic', headers=HD, json={'dialog': tr['dialog'], 'language': 'pt-BR', 'duration_seconds': tr['duration_seconds']}) diag = resp.json() print(f'Sentiment: {diag[\"analysis\"][\"sentiment\"][\"list_choice\"]}') print(f'Summary: {diag[\"analysis\"][\"dialogue_summary\"][\"explanation\"][:100]}...')  # 3. Audit resp = httpx.post(f'{API}/v1/analyze/auditoriaRisco', headers=HD, json={'dialogo': tr['dialog'], 'duration_seconds': tr['duration_seconds']}) audit = resp.json() print(f'Score: {audit[\"audit_score\"]} | Verdict: {audit[\"verdict\"]}') print(f'Detections: {audit[\"total_detections\"]} | Violations: {len(audit[\"violations\"])} | Positives: {len(audit[\"positives\"])}') ```  **Authentication:** All endpoints require an API Key in the `Authorization` header: `Bearer fai_xxx`  Get your API Key at [falaai.action.tec.br/api](https://falaai.action.tec.br/api)
+#Transcribe, diagnose and score calls with 3 simple endpoints.  **Endpoints:** - `POST /v1/audio/transcriptions` — Audio to text - `POST /v1/analyze/diagnostic` — Conversation analysis - `POST /v1/analyze/auditoriaRisco` — Compliance audit  **Complete flow (Python):** ```python import httpx  API = 'https://api01-falaai.action.tec.br' KEY = 'fai_xxx' HD = {'Authorization': f'Bearer {KEY}'}  # 1. Transcribe files = {'file': open('call.mp3', 'rb')} resp = httpx.post(f'{API}/v1/audio/transcriptions', headers=HD, files=files, data={'model': 'falaai-transcribe-1', 'language': 'pt'}) tr = resp.json() print(f'Text: {tr[\"text\"][:100]}...')  # 2. Diagnose resp = httpx.post(f'{API}/v1/analyze/diagnostic', headers=HD, json={'dialog': tr['dialog'], 'language': 'pt-BR', 'duration_seconds': tr['duration_seconds']}) diag = resp.json() print(f'Sentiment: {diag[\"analysis\"][\"sentiment\"][\"list_choice\"]}') print(f'Summary: {diag[\"analysis\"][\"dialogue_summary\"][\"explanation\"][:100]}...')  # 3. Audit resp = httpx.post(f'{API}/v1/analyze/auditoriaRisco', headers=HD, json={'dialogo': tr['dialog'], 'duration_seconds': tr['duration_seconds']}) audit = resp.json() print(f'Score: {audit[\"audit_score\"]} | Verdict: {audit[\"verdict\"]}') print(f'Detections: {audit[\"total_detections\"]} | Violations: {len(audit[\"violations\"])} | Positives: {len(audit[\"positives\"])}') ```  **Authentication:** All endpoints require an API Key in the `Authorization` header: `Bearer fai_xxx`  Get your API Key at [falaai.action.tec.br/api](https://falaai.action.tec.br/api)
 
 The version of the OpenAPI document: 1.21.47
 
@@ -24,12 +24,24 @@ module FalaAI
     # Role (agent/client/bot/unknown)
     attr_accessor :role
 
+    # Role inference confidence (high/medium/low)
+    attr_accessor :confidence
+
+    # Role source (input/inferred)
+    attr_accessor :source
+
+    # Role inference evidence
+    attr_accessor :evidence
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'interlocutor' => :'interlocutor',
         :'name' => :'name',
-        :'role' => :'role'
+        :'role' => :'role',
+        :'confidence' => :'confidence',
+        :'source' => :'source',
+        :'evidence' => :'evidence'
       }
     end
 
@@ -48,7 +60,10 @@ module FalaAI
       {
         :'interlocutor' => :'String',
         :'name' => :'String',
-        :'role' => :'String'
+        :'role' => :'String',
+        :'confidence' => :'String',
+        :'source' => :'String',
+        :'evidence' => :'String'
       }
     end
 
@@ -85,6 +100,18 @@ module FalaAI
       if attributes.key?(:'role')
         self.role = attributes[:'role']
       end
+
+      if attributes.key?(:'confidence')
+        self.confidence = attributes[:'confidence']
+      end
+
+      if attributes.key?(:'source')
+        self.source = attributes[:'source']
+      end
+
+      if attributes.key?(:'evidence')
+        self.evidence = attributes[:'evidence']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -109,7 +136,10 @@ module FalaAI
       self.class == o.class &&
           interlocutor == o.interlocutor &&
           name == o.name &&
-          role == o.role
+          role == o.role &&
+          confidence == o.confidence &&
+          source == o.source &&
+          evidence == o.evidence
     end
 
     # @see the `==` method
@@ -121,7 +151,7 @@ module FalaAI
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [interlocutor, name, role].hash
+      [interlocutor, name, role, confidence, source, evidence].hash
     end
 
     # Builds the object from hash
