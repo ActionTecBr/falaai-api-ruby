@@ -1,0 +1,4 @@
+--default-path tests/e2e
+--pattern *_spec.rb
+--require ./tests/e2e/conftest.rb
+--require ./tests/e2e/e2e_logger.rb
