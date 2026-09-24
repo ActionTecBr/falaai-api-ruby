@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    falaai-api (1.21.47)
+    falaai-api (1.21.48)
       mime-types (~> 3.5)
       typhoeus (~> 1.0, >= 1.0.1)
 
@@ -100,7 +100,7 @@ DEPENDENCIES
   mime-types (~> 3.5)
   pry-byebug
   rake (~> 13.4.2)
-  rspec (~> 3.6, ~> 3.13, >= 3.6.0)
+  rspec (~> 3.13)
   rubocop (~> 0.66.0)
 
 BUNDLED WITH
