@@ -8,5 +8,5 @@ group :development, :test do
   gem 'rake', '~> 13.4.2'
   gem 'rspec', '~> 3.13'
   gem 'pry-byebug'
-  gem 'rubocop', '~> 0.66.0'
+  gem 'rubocop', '~> 1.91.0'
 end
