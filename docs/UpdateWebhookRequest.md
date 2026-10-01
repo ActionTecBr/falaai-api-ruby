@@ -16,11 +16,11 @@
 require 'falaai-api'
 
 instance = FalaAI::UpdateWebhookRequest.new(
-  name: Alertas FalaAI,
-  url: https://webhook.site/00000000-0000-0000-0000-000000000000,
-  events: [credits.low],
-  retry_enabled: true,
-  active: true
+  name: null,
+  url: null,
+  events: null,
+  retry_enabled: null,
+  active: null
 )
 ```
 

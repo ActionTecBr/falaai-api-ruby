@@ -17,12 +17,12 @@
 require 'falaai-api'
 
 instance = FalaAI::DiagnosticResponse.new(
-  id: di-550e8400-e29b-41d4-a716-446655440000,
-  response_language: pt-BR,
-  object: analysis,
+  id: null,
+  response_language: null,
+  object: null,
   analysis: null,
   usage: null,
-  client_reference_id: call-2026-08-30-001
+  client_reference_id: null
 )
 ```
 

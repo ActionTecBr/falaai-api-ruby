@@ -16,11 +16,11 @@
 require 'falaai-api'
 
 instance = FalaAI::AudioEvent.new(
-  event: [suspiro],
-  start_s: 75.42,
-  end_s: 75.43,
-  duration_s: 0.01,
-  formatted_timestamp: 00:01:15.420
+  event: null,
+  start_s: null,
+  end_s: null,
+  duration_s: null,
+  formatted_timestamp: null
 )
 ```
 

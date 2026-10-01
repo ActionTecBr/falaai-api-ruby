@@ -14,9 +14,9 @@
 require 'falaai-api'
 
 instance = FalaAI::DiagnosticUsage.new(
-  characters: 3946,
-  credits_consumed: 15,
-  processing_ms: 6800
+  characters: null,
+  credits_consumed: null,
+  processing_ms: null
 )
 ```
 

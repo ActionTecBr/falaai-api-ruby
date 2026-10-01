@@ -1,20 +1,20 @@
 # FalaAI::EmailAlertsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api01-falaai.action.tec.br*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_email_alert_v1_email_alerts_post**](EmailAlertsApi.md#create_email_alert_v1_email_alerts_post) | **POST** /v1/email-alerts | Criar email de alerta |
-| [**delete_email_alert_v1_email_alerts_alert_id_delete**](EmailAlertsApi.md#delete_email_alert_v1_email_alerts_alert_id_delete) | **DELETE** /v1/email-alerts/{alert_id} | Remover email de alerta |
-| [**list_email_alerts_v1_email_alerts_get**](EmailAlertsApi.md#list_email_alerts_v1_email_alerts_get) | **GET** /v1/email-alerts | Listar emails de alerta |
-| [**update_email_alert_v1_email_alerts_alert_id_put**](EmailAlertsApi.md#update_email_alert_v1_email_alerts_alert_id_put) | **PUT** /v1/email-alerts/{alert_id} | Atualizar email de alerta |
+| [**create_email_alert_v1_email_alerts_post**](EmailAlertsApi.md#create_email_alert_v1_email_alerts_post) | **POST** /v1/email-alerts | Create email alert |
+| [**delete_email_alert_v1_email_alerts_alert_id_delete**](EmailAlertsApi.md#delete_email_alert_v1_email_alerts_alert_id_delete) | **DELETE** /v1/email-alerts/{alert_id} | Delete email alert |
+| [**list_email_alerts_v1_email_alerts_get**](EmailAlertsApi.md#list_email_alerts_v1_email_alerts_get) | **GET** /v1/email-alerts | List email alerts |
+| [**update_email_alert_v1_email_alerts_alert_id_put**](EmailAlertsApi.md#update_email_alert_v1_email_alerts_alert_id_put) | **PUT** /v1/email-alerts/{alert_id} | Update email alert |
 
 
 ## create_email_alert_v1_email_alerts_post
 
 > <EmailAlertItem> create_email_alert_v1_email_alerts_post(create_email_alert_request)
 
-Criar email de alerta
+Create email alert
 
 ### Examples
 
@@ -28,10 +28,10 @@ FalaAI.configure do |config|
 end
 
 api_instance = FalaAI::EmailAlertsApi.new
-create_email_alert_request = FalaAI::CreateEmailAlertRequest.new({name: 'Financeiro', email: 'finance@empresa.com', events: [payment.failed,  subscription.renewed]}) # CreateEmailAlertRequest | 
+create_email_alert_request = FalaAI::CreateEmailAlertRequest.new({name: 'name_example', email: 'email_example', events: [FalaAI::EmailEvent::SUBSCRIPTION_CREATED]}) # CreateEmailAlertRequest | 
 
 begin
-  # Criar email de alerta
+  # Create email alert
   result = api_instance.create_email_alert_v1_email_alerts_post(create_email_alert_request)
   p result
 rescue FalaAI::ApiError => e
@@ -47,7 +47,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Criar email de alerta
+  # Create email alert
   data, status_code, headers = api_instance.create_email_alert_v1_email_alerts_post_with_http_info(create_email_alert_request)
   p status_code # => 2xx
   p headers # => { ... }
@@ -81,7 +81,7 @@ end
 
 > <EmailAlertMessageResponse> delete_email_alert_v1_email_alerts_alert_id_delete(alert_id)
 
-Remover email de alerta
+Delete email alert
 
 ### Examples
 
@@ -98,7 +98,7 @@ api_instance = FalaAI::EmailAlertsApi.new
 alert_id = 'alert_id_example' # String | 
 
 begin
-  # Remover email de alerta
+  # Delete email alert
   result = api_instance.delete_email_alert_v1_email_alerts_alert_id_delete(alert_id)
   p result
 rescue FalaAI::ApiError => e
@@ -114,7 +114,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Remover email de alerta
+  # Delete email alert
   data, status_code, headers = api_instance.delete_email_alert_v1_email_alerts_alert_id_delete_with_http_info(alert_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -148,7 +148,7 @@ end
 
 > <EmailAlertListResponse> list_email_alerts_v1_email_alerts_get(opts)
 
-Listar emails de alerta
+List email alerts
 
 ### Examples
 
@@ -168,7 +168,7 @@ opts = {
 }
 
 begin
-  # Listar emails de alerta
+  # List email alerts
   result = api_instance.list_email_alerts_v1_email_alerts_get(opts)
   p result
 rescue FalaAI::ApiError => e
@@ -184,7 +184,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Listar emails de alerta
+  # List email alerts
   data, status_code, headers = api_instance.list_email_alerts_v1_email_alerts_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -219,7 +219,7 @@ end
 
 > <EmailAlertMessageResponse> update_email_alert_v1_email_alerts_alert_id_put(alert_id, update_email_alert_request)
 
-Atualizar email de alerta
+Update email alert
 
 ### Examples
 
@@ -237,7 +237,7 @@ alert_id = 'alert_id_example' # String |
 update_email_alert_request = FalaAI::UpdateEmailAlertRequest.new # UpdateEmailAlertRequest | 
 
 begin
-  # Atualizar email de alerta
+  # Update email alert
   result = api_instance.update_email_alert_v1_email_alerts_alert_id_put(alert_id, update_email_alert_request)
   p result
 rescue FalaAI::ApiError => e
@@ -253,7 +253,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Atualizar email de alerta
+  # Update email alert
   data, status_code, headers = api_instance.update_email_alert_v1_email_alerts_alert_id_put_with_http_info(alert_id, update_email_alert_request)
   p status_code # => 2xx
   p headers # => { ... }

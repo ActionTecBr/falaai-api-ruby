@@ -14,8 +14,8 @@
 require 'falaai-api'
 
 instance = FalaAI::Participant.new(
-  interlocutor: Interlocutor 1,
-  name: Maria,
+  interlocutor: null,
+  name: null,
   role: null
 )
 ```

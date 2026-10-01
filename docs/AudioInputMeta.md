@@ -16,11 +16,11 @@
 require 'falaai-api'
 
 instance = FalaAI::AudioInputMeta.new(
-  duration_s: 151.04,
-  original_format: wav,
-  codec: pcm_s16le,
-  sample_rate: 44100,
-  channels: 2
+  duration_s: null,
+  original_format: null,
+  codec: null,
+  sample_rate: null,
+  channels: null
 )
 ```
 

@@ -16,11 +16,11 @@
 require 'falaai-api'
 
 instance = FalaAI::ParticipantDiagnostic.new(
-  interlocutor: Speaker 1,
-  role: client,
-  name: AntÃ´nio,
-  confidence: high,
-  evidence: TÃ¡ quarenta reais e setenta e um, AntÃ´nio.
+  interlocutor: null,
+  role: null,
+  name: null,
+  confidence: null,
+  evidence: null
 )
 ```
 

@@ -1,6 +1,6 @@
 # FalaAI::SpeechApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api01-falaai.action.tec.br*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -12,8 +12,6 @@ All URIs are relative to *http://localhost*
 > <TranscriptionResponse> create_transcription_v1_audio_transcriptions_post(file, opts)
 
 Transcribe audio to text
-
-Upload an audio file and receive transcription with speaker diarization, audio events, and dialog.  **Supported formats:** .mp3, .mp4, .m4a, .wav, .flac, .ogg, .webm, .aac, .opus  **Limits:** - Maximum audio duration: 3 hours - Maximum file size: 1GB - Cost: 1 credit per second of audio (rounded up), minimum 1 credit  **Supported languages:** pt, en, es, fr, de, it, ja, ko, nl, pl, ru, tr, zh, vi, id, th, ar, hi, cs, da, el, fi, he, hu, ms, no, ro, sk, sv, ta, uk  **Python:** ```python import httpx  response = httpx.post(     'https://api01-falaai.action.tec.br/v1/audio/transcriptions',     headers={'Authorization': 'Bearer fai_xxx'},     files={'file': open('call.mp3', 'rb')},     data={'model': 'falaai-transcribe-1', 'language': 'pt'} ) print(response.json()) ```  **cURL:** ```bash curl https://api01-falaai.action.tec.br/v1/audio/transcriptions \\   -H 'Authorization: Bearer fai_xxx' \\   -F 'file=@call.mp3' \\   -F 'model=falaai-transcribe-1' \\   -F 'language=pt' ```
 
 ### Examples
 

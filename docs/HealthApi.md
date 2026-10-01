@@ -1,6 +1,6 @@
 # FalaAI::HealthApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api01-falaai.action.tec.br*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -19,11 +19,6 @@ Health Check
 ```ruby
 require 'time'
 require 'falaai-api'
-# setup authorization
-FalaAI.configure do |config|
-  # Configure Bearer authorization (fai_xxx): ApiKeyAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
 
 api_instance = FalaAI::HealthApi.new
 
@@ -64,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -83,11 +78,6 @@ Health Check
 ```ruby
 require 'time'
 require 'falaai-api'
-# setup authorization
-FalaAI.configure do |config|
-  # Configure Bearer authorization (fai_xxx): ApiKeyAuth
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
 
 api_instance = FalaAI::HealthApi.new
 
@@ -128,7 +118,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKeyAuth](../README.md#ApiKeyAuth)
+No authorization required
 
 ### HTTP request headers
 

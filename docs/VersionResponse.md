@@ -14,9 +14,9 @@
 require 'falaai-api'
 
 instance = FalaAI::VersionResponse.new(
-  service: FalaAI API,
-  version: api_v1.21.45,
-  deploy_date: 2026-09-22 20260922_023910
+  service: null,
+  version: null,
+  deploy_date: null
 )
 ```
 

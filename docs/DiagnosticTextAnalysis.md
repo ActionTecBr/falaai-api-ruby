@@ -12,7 +12,7 @@
 require 'falaai-api'
 
 instance = FalaAI::DiagnosticTextAnalysis.new(
-  explanation: Speaker 1 provided guidance on documentation...
+  explanation: null
 )
 ```
 

@@ -27,23 +27,22 @@
 require 'falaai-api'
 
 instance = FalaAI::TranscriptionResponse.new(
-  id: tr-550e8400-e29b-41d4-a716-446655440000,
-  object: transcription,
-  model: falaai-transcribe-1,
-  filename: chamada.mp3,
-  processed_at: 2026-06-25T01:00:35.399252+00:00,
+  id: null,
+  object: null,
+  model: null,
+  filename: null,
+  processed_at: null,
   usage: null,
-  language: por,
-  language_confidence: 1.0,
-  duration_seconds: 151.04,
-  text: Oi, Alex. Oi. O, Thais- Oi...,
-  dialog: Speaker 1: [00:00:00.540 - 00:00:01.139] Oi, Alex.
-Speaker 2: [00:00:01.940 - 00:00:02.720] Oi...,
+  language: null,
+  language_confidence: null,
+  duration_seconds: null,
+  text: null,
+  dialog: null,
   audio_events: null,
-  event_types: [[riso], [suspiro]],
-  word_count: 773,
+  event_types: null,
+  word_count: null,
   input: null,
-  client_reference_id: call-2026-08-30-001
+  client_reference_id: null
 )
 ```
 

@@ -14,9 +14,9 @@
 require 'falaai-api'
 
 instance = FalaAI::CreateEmailAlertRequest.new(
-  name: Financeiro,
-  email: finance@empresa.com,
-  events: [payment.failed, subscription.renewed]
+  name: null,
+  email: null,
+  events: null
 )
 ```
 

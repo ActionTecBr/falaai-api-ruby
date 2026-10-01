@@ -1,22 +1,22 @@
 # FalaAI::WebhooksApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api01-falaai.action.tec.br*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_webhook_v1_webhooks_post**](WebhooksApi.md#create_webhook_v1_webhooks_post) | **POST** /v1/webhooks | Criar webhook de alertas |
-| [**delete_webhook_v1_webhooks_webhook_id_delete**](WebhooksApi.md#delete_webhook_v1_webhooks_webhook_id_delete) | **DELETE** /v1/webhooks/{webhook_id} | Remover webhook |
-| [**list_webhooks_v1_webhooks_get**](WebhooksApi.md#list_webhooks_v1_webhooks_get) | **GET** /v1/webhooks | Listar webhooks de alertas |
-| [**update_webhook_v1_webhooks_webhook_id_put**](WebhooksApi.md#update_webhook_v1_webhooks_webhook_id_put) | **PUT** /v1/webhooks/{webhook_id} | Atualizar webhook |
+| [**create_webhook_v1_webhooks_post**](WebhooksApi.md#create_webhook_v1_webhooks_post) | **POST** /v1/webhooks | Create webhook |
+| [**delete_webhook_v1_webhooks_webhook_id_delete**](WebhooksApi.md#delete_webhook_v1_webhooks_webhook_id_delete) | **DELETE** /v1/webhooks/{webhook_id} | Delete webhook |
+| [**list_webhooks_v1_webhooks_get**](WebhooksApi.md#list_webhooks_v1_webhooks_get) | **GET** /v1/webhooks | List webhooks |
+| [**update_webhook_v1_webhooks_webhook_id_put**](WebhooksApi.md#update_webhook_v1_webhooks_webhook_id_put) | **PUT** /v1/webhooks/{webhook_id} | Update webhook |
 
 
 ## create_webhook_v1_webhooks_post
 
 > <WebhookItem> create_webhook_v1_webhooks_post(create_webhook_request)
 
-Criar webhook de alertas
+Create webhook
 
-Cria inscricao para eventos de alerta (10 alertas). Payload enviado: WebhookPayload(event, data, timestamp) com HMAC FalaAI-Signature. Para comprovar a origem, recalcule HMAC-SHA256 de \"timestamp.body\" com seu secret (exemplos: /examples/download/python.zip e nodejs.zip, arquivo webhook_verify).
+Creates a subscription for alert events (10 alerts). Payload delivered: WebhookPayload(event, data, timestamp) with HMAC FalaAI-Signature. To verify the origin, recompute HMAC-SHA256 of \"timestamp.body\" with your secret.
 
 ### Examples
 
@@ -30,10 +30,10 @@ FalaAI.configure do |config|
 end
 
 api_instance = FalaAI::WebhooksApi.new
-create_webhook_request = FalaAI::CreateWebhookRequest.new({name: 'Alertas FalaAI', url: 'https://webhook.site/00000000-0000-0000-0000-000000000000', events: [credits.low,  credits.exhausted,  payment.failed]}) # CreateWebhookRequest | 
+create_webhook_request = FalaAI::CreateWebhookRequest.new({name: 'name_example', url: 'url_example', events: [FalaAI::WebhookEvent::SUBSCRIPTION_CREATED]}) # CreateWebhookRequest | 
 
 begin
-  # Criar webhook de alertas
+  # Create webhook
   result = api_instance.create_webhook_v1_webhooks_post(create_webhook_request)
   p result
 rescue FalaAI::ApiError => e
@@ -49,7 +49,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Criar webhook de alertas
+  # Create webhook
   data, status_code, headers = api_instance.create_webhook_v1_webhooks_post_with_http_info(create_webhook_request)
   p status_code # => 2xx
   p headers # => { ... }
@@ -83,9 +83,9 @@ end
 
 > <MessageResponse> delete_webhook_v1_webhooks_webhook_id_delete(webhook_id)
 
-Remover webhook
+Delete webhook
 
-Remove inscricao de webhook por ID.
+Deletes a webhook subscription by ID.
 
 ### Examples
 
@@ -102,7 +102,7 @@ api_instance = FalaAI::WebhooksApi.new
 webhook_id = 'webhook_id_example' # String | 
 
 begin
-  # Remover webhook
+  # Delete webhook
   result = api_instance.delete_webhook_v1_webhooks_webhook_id_delete(webhook_id)
   p result
 rescue FalaAI::ApiError => e
@@ -118,7 +118,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Remover webhook
+  # Delete webhook
   data, status_code, headers = api_instance.delete_webhook_v1_webhooks_webhook_id_delete_with_http_info(webhook_id)
   p status_code # => 2xx
   p headers # => { ... }
@@ -152,9 +152,9 @@ end
 
 > <WebhookListResponse> list_webhooks_v1_webhooks_get(opts)
 
-Listar webhooks de alertas
+List webhooks
 
-Lista webhooks do usuario autenticado (10 alertas). Paginado. Inclui o secret da assinatura da URL (sempre visivel ao dono).
+Lists the authenticated user's webhooks (10 alerts). Paginated. Includes the URL signature secret (always visible to the owner).
 
 ### Examples
 
@@ -174,7 +174,7 @@ opts = {
 }
 
 begin
-  # Listar webhooks de alertas
+  # List webhooks
   result = api_instance.list_webhooks_v1_webhooks_get(opts)
   p result
 rescue FalaAI::ApiError => e
@@ -190,7 +190,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Listar webhooks de alertas
+  # List webhooks
   data, status_code, headers = api_instance.list_webhooks_v1_webhooks_get_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
@@ -225,9 +225,9 @@ end
 
 > <MessageResponse> update_webhook_v1_webhooks_webhook_id_put(webhook_id, update_webhook_request)
 
-Atualizar webhook
+Update webhook
 
-Atualiza name/url/events/retry_enabled/active do webhook. Eventos validos: 10 alertas.
+Updates the webhook's name/url/events/retry_enabled/active. Valid events: 10 alerts.
 
 ### Examples
 
@@ -245,7 +245,7 @@ webhook_id = 'webhook_id_example' # String |
 update_webhook_request = FalaAI::UpdateWebhookRequest.new # UpdateWebhookRequest | 
 
 begin
-  # Atualizar webhook
+  # Update webhook
   result = api_instance.update_webhook_v1_webhooks_webhook_id_put(webhook_id, update_webhook_request)
   p result
 rescue FalaAI::ApiError => e
@@ -261,7 +261,7 @@ This returns an Array which contains the response data, status code and headers.
 
 ```ruby
 begin
-  # Atualizar webhook
+  # Update webhook
   data, status_code, headers = api_instance.update_webhook_v1_webhooks_webhook_id_put_with_http_info(webhook_id, update_webhook_request)
   p status_code # => 2xx
   p headers # => { ... }

@@ -14,9 +14,9 @@
 require 'falaai-api'
 
 instance = FalaAI::DiagnosticCategoricalAnalysis.new(
-  list_choice: Informative,
-  justification: Information about required documentation was provided,
-  evidence_phrases: [[00:01:36.640 - 00:02:02.659] No, same thing: proof of address...]
+  list_choice: null,
+  justification: null,
+  evidence_phrases: null
 )
 ```
 

@@ -16,11 +16,11 @@
 require 'falaai-api'
 
 instance = FalaAI::DiagnosticAudioEvent.new(
-  event: [laughter],
-  start_s: 72.98,
-  end_s: 74.34,
-  duration_s: 1.36,
-  formatted_timestamp: 00:01:12.980
+  event: null,
+  start_s: null,
+  end_s: null,
+  duration_s: null,
+  formatted_timestamp: null
 )
 ```
 

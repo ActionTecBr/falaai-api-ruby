@@ -14,9 +14,9 @@
 require 'falaai-api'
 
 instance = FalaAI::TranscriptionUsage.new(
-  audio_seconds: 151.04,
-  credits_consumed: 65,
-  processing_ms: 15156
+  audio_seconds: null,
+  credits_consumed: null,
+  processing_ms: null
 )
 ```
 

@@ -28,12 +28,8 @@ RSpec.describe 'Contract' do
   end
 
   it 'exemplos existem' do
-    %w[
-      curl/transcribe.sh python/transcribe.py nodejs/transcribe.js
-      curl/auditoria_risco.sh python/auditoria_risco.py nodejs/auditoria_risco.js
-      curl/diagnostic.sh python/diagnostic.py nodejs/diagnostic.js
-    ].each do |f|
-      expect(File.exist?(File.join(ROOT, 'app/static/examples', f))).to be(true)
+    %w[transcribe.rb diagnose.rb audit.rb health.rb].each do |f|
+      expect(File.exist?(File.join(ROOT, 'sdks/ruby/examples', f))).to be(true)
     end
   end
 end

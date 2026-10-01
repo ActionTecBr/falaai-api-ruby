@@ -1,6 +1,6 @@
 # FalaAI::UsageApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *https://api01-falaai.action.tec.br*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
