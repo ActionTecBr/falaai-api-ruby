@@ -68,6 +68,12 @@ docs/WebhookEvent.md
 docs/WebhookItem.md
 docs/WebhookListResponse.md
 docs/WebhooksApi.md
+docs/WhatsappApi.md
+docs/WhatsappConversation.md
+docs/WhatsappConversationsResponse.md
+docs/WhatsappMeta.md
+docs/WhatsappSpeaker.md
+docs/WhatsappUsage.md
 falaai-api.gemspec
 git_push.sh
 lib/falaai-api.rb
@@ -78,6 +84,7 @@ lib/falaai-api/api/speech_api.rb
 lib/falaai-api/api/usage_api.rb
 lib/falaai-api/api/version_api.rb
 lib/falaai-api/api/webhooks_api.rb
+lib/falaai-api/api/whatsapp_api.rb
 lib/falaai-api/api_client.rb
 lib/falaai-api/api_error.rb
 lib/falaai-api/api_model_base.rb
@@ -136,6 +143,11 @@ lib/falaai-api/models/version_response.rb
 lib/falaai-api/models/webhook_event.rb
 lib/falaai-api/models/webhook_item.rb
 lib/falaai-api/models/webhook_list_response.rb
+lib/falaai-api/models/whatsapp_conversation.rb
+lib/falaai-api/models/whatsapp_conversations_response.rb
+lib/falaai-api/models/whatsapp_meta.rb
+lib/falaai-api/models/whatsapp_speaker.rb
+lib/falaai-api/models/whatsapp_usage.rb
 lib/falaai-api/version.rb
 spec/api/analysis_api_spec.rb
 spec/api/email_alerts_api_spec.rb
@@ -144,6 +156,7 @@ spec/api/speech_api_spec.rb
 spec/api/usage_api_spec.rb
 spec/api/version_api_spec.rb
 spec/api/webhooks_api_spec.rb
+spec/api/whatsapp_api_spec.rb
 spec/models/audio_event_spec.rb
 spec/models/audio_input_meta_spec.rb
 spec/models/create_email_alert_request_spec.rb
@@ -198,4 +211,9 @@ spec/models/version_response_spec.rb
 spec/models/webhook_event_spec.rb
 spec/models/webhook_item_spec.rb
 spec/models/webhook_list_response_spec.rb
+spec/models/whatsapp_conversation_spec.rb
+spec/models/whatsapp_conversations_response_spec.rb
+spec/models/whatsapp_meta_spec.rb
+spec/models/whatsapp_speaker_spec.rb
+spec/models/whatsapp_usage_spec.rb
 spec/spec_helper.rb

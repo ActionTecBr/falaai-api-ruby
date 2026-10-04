@@ -14,34 +14,34 @@ require 'date'
 require 'time'
 
 module FalaAI
-  class HealthResponse < ApiModelBase
-    # Overall API status
-    attr_accessor :status
+  class WhatsappConversationsResponse < ApiModelBase
+    # Unique identifier. Prefix 'wc-' + UUID
+    attr_accessor :id
 
-    # Current API version
-    attr_accessor :version
+    # Object type. Always 'conversations'
+    attr_accessor :object
 
-    # Uptime in seconds
-    attr_accessor :uptime_seconds
+    # Usage and processing information
+    attr_accessor :usage
 
-    # Database connection status
-    attr_accessor :database
+    # Segmented conversations
+    attr_accessor :conversations
 
-    # Development phase
-    attr_accessor :phase
+    # Client-supplied ID echoed verbatim (if provided)
+    attr_accessor :client_reference_id
 
-    # Expected public launch date
-    attr_accessor :launch_date
+    # Segmentation parameters and counts
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'status' => :'status',
-        :'version' => :'version',
-        :'uptime_seconds' => :'uptime_seconds',
-        :'database' => :'database',
-        :'phase' => :'phase',
-        :'launch_date' => :'launch_date'
+        :'id' => :'id',
+        :'object' => :'object',
+        :'usage' => :'usage',
+        :'conversations' => :'conversations',
+        :'client_reference_id' => :'client_reference_id',
+        :'meta' => :'meta'
       }
     end
 
@@ -58,12 +58,12 @@ module FalaAI
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'status' => :'String',
-        :'version' => :'String',
-        :'uptime_seconds' => :'Integer',
-        :'database' => :'Boolean',
-        :'phase' => :'String',
-        :'launch_date' => :'String'
+        :'id' => :'String',
+        :'object' => :'String',
+        :'usage' => :'WhatsappUsage',
+        :'conversations' => :'Array<WhatsappConversation>',
+        :'client_reference_id' => :'String',
+        :'meta' => :'WhatsappMeta'
       }
     end
 
@@ -77,52 +77,52 @@ module FalaAI
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `FalaAI::HealthResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `FalaAI::WhatsappConversationsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `FalaAI::HealthResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `FalaAI::WhatsappConversationsResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       else
-        self.status = nil
+        self.id = nil
       end
 
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
+      if attributes.key?(:'object')
+        self.object = attributes[:'object']
       else
-        self.version = nil
+        self.object = nil
       end
 
-      if attributes.key?(:'uptime_seconds')
-        self.uptime_seconds = attributes[:'uptime_seconds']
+      if attributes.key?(:'usage')
+        self.usage = attributes[:'usage']
       else
-        self.uptime_seconds = nil
+        self.usage = nil
       end
 
-      if attributes.key?(:'database')
-        self.database = attributes[:'database']
+      if attributes.key?(:'conversations')
+        if (value = attributes[:'conversations']).is_a?(Array)
+          self.conversations = value
+        end
       else
-        self.database = nil
+        self.conversations = nil
       end
 
-      if attributes.key?(:'phase')
-        self.phase = attributes[:'phase']
-      else
-        self.phase = nil
+      if attributes.key?(:'client_reference_id')
+        self.client_reference_id = attributes[:'client_reference_id']
       end
 
-      if attributes.key?(:'launch_date')
-        self.launch_date = attributes[:'launch_date']
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       else
-        self.launch_date = nil
+        self.meta = nil
       end
     end
 
@@ -131,28 +131,24 @@ module FalaAI
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @status.nil?
-        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @version.nil?
-        invalid_properties.push('invalid value for "version", version cannot be nil.')
+      if @object.nil?
+        invalid_properties.push('invalid value for "object", object cannot be nil.')
       end
 
-      if @uptime_seconds.nil?
-        invalid_properties.push('invalid value for "uptime_seconds", uptime_seconds cannot be nil.')
+      if @usage.nil?
+        invalid_properties.push('invalid value for "usage", usage cannot be nil.')
       end
 
-      if @database.nil?
-        invalid_properties.push('invalid value for "database", database cannot be nil.')
+      if @conversations.nil?
+        invalid_properties.push('invalid value for "conversations", conversations cannot be nil.')
       end
 
-      if @phase.nil?
-        invalid_properties.push('invalid value for "phase", phase cannot be nil.')
-      end
-
-      if @launch_date.nil?
-        invalid_properties.push('invalid value for "launch_date", launch_date cannot be nil.')
+      if @meta.nil?
+        invalid_properties.push('invalid value for "meta", meta cannot be nil.')
       end
 
       invalid_properties
@@ -162,73 +158,62 @@ module FalaAI
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @status.nil?
-      return false if @version.nil?
-      return false if @uptime_seconds.nil?
-      return false if @database.nil?
-      return false if @phase.nil?
-      return false if @launch_date.nil?
+      return false if @id.nil?
+      return false if @object.nil?
+      return false if @usage.nil?
+      return false if @conversations.nil?
+      return false if @meta.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] status Value to be assigned
-    def status=(status)
-      if status.nil?
-        fail ArgumentError, 'status cannot be nil'
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
       end
 
-      @status = status
+      @id = id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] version Value to be assigned
-    def version=(version)
-      if version.nil?
-        fail ArgumentError, 'version cannot be nil'
+    # @param [Object] object Value to be assigned
+    def object=(object)
+      if object.nil?
+        fail ArgumentError, 'object cannot be nil'
       end
 
-      @version = version
+      @object = object
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] uptime_seconds Value to be assigned
-    def uptime_seconds=(uptime_seconds)
-      if uptime_seconds.nil?
-        fail ArgumentError, 'uptime_seconds cannot be nil'
+    # @param [Object] usage Value to be assigned
+    def usage=(usage)
+      if usage.nil?
+        fail ArgumentError, 'usage cannot be nil'
       end
 
-      @uptime_seconds = uptime_seconds
+      @usage = usage
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] database Value to be assigned
-    def database=(database)
-      if database.nil?
-        fail ArgumentError, 'database cannot be nil'
+    # @param [Object] conversations Value to be assigned
+    def conversations=(conversations)
+      if conversations.nil?
+        fail ArgumentError, 'conversations cannot be nil'
       end
 
-      @database = database
+      @conversations = conversations
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] phase Value to be assigned
-    def phase=(phase)
-      if phase.nil?
-        fail ArgumentError, 'phase cannot be nil'
+    # @param [Object] meta Value to be assigned
+    def meta=(meta)
+      if meta.nil?
+        fail ArgumentError, 'meta cannot be nil'
       end
 
-      @phase = phase
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] launch_date Value to be assigned
-    def launch_date=(launch_date)
-      if launch_date.nil?
-        fail ArgumentError, 'launch_date cannot be nil'
-      end
-
-      @launch_date = launch_date
+      @meta = meta
     end
 
     # Checks equality by comparing each attribute.
@@ -236,12 +221,12 @@ module FalaAI
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          status == o.status &&
-          version == o.version &&
-          uptime_seconds == o.uptime_seconds &&
-          database == o.database &&
-          phase == o.phase &&
-          launch_date == o.launch_date
+          id == o.id &&
+          object == o.object &&
+          usage == o.usage &&
+          conversations == o.conversations &&
+          client_reference_id == o.client_reference_id &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -253,7 +238,7 @@ module FalaAI
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, version, uptime_seconds, database, phase, launch_date].hash
+      [id, object, usage, conversations, client_reference_id, meta].hash
     end
 
     # Builds the object from hash

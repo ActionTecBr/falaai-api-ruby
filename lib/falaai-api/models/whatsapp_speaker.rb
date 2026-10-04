@@ -14,30 +14,18 @@ require 'date'
 require 'time'
 
 module FalaAI
-  class AudioEvent < ApiModelBase
-    # Type of identified audio event. Ex: [riso], [suspiro], [pausa], [tosse]
-    attr_accessor :event
+  class WhatsappSpeaker < ApiModelBase
+    # Speaker label (e.g. 'Speaker 1')
+    attr_accessor :label
 
-    # Start time of audio event in seconds
-    attr_accessor :start_s
-
-    # End time of audio event in seconds
-    attr_accessor :end_s
-
-    # Event duration in seconds
-    attr_accessor :duration_s
-
-    # Formatted timestamp HH:MM:SS.mmm of event start
-    attr_accessor :formatted_timestamp
+    # Participant name from the export
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'event' => :'event',
-        :'start_s' => :'start_s',
-        :'end_s' => :'end_s',
-        :'duration_s' => :'duration_s',
-        :'formatted_timestamp' => :'formatted_timestamp'
+        :'label' => :'label',
+        :'name' => :'name'
       }
     end
 
@@ -54,11 +42,8 @@ module FalaAI
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'event' => :'String',
-        :'start_s' => :'Float',
-        :'end_s' => :'Float',
-        :'duration_s' => :'Float',
-        :'formatted_timestamp' => :'String'
+        :'label' => :'String',
+        :'name' => :'String'
       }
     end
 
@@ -72,46 +57,28 @@ module FalaAI
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `FalaAI::AudioEvent` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `FalaAI::WhatsappSpeaker` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `FalaAI::AudioEvent`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `FalaAI::WhatsappSpeaker`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
+      if attributes.key?(:'label')
+        self.label = attributes[:'label']
       else
-        self.event = nil
+        self.label = nil
       end
 
-      if attributes.key?(:'start_s')
-        self.start_s = attributes[:'start_s']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       else
-        self.start_s = nil
-      end
-
-      if attributes.key?(:'end_s')
-        self.end_s = attributes[:'end_s']
-      else
-        self.end_s = nil
-      end
-
-      if attributes.key?(:'duration_s')
-        self.duration_s = attributes[:'duration_s']
-      else
-        self.duration_s = nil
-      end
-
-      if attributes.key?(:'formatted_timestamp')
-        self.formatted_timestamp = attributes[:'formatted_timestamp']
-      else
-        self.formatted_timestamp = nil
+        self.name = nil
       end
     end
 
@@ -120,24 +87,12 @@ module FalaAI
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @event.nil?
-        invalid_properties.push('invalid value for "event", event cannot be nil.')
+      if @label.nil?
+        invalid_properties.push('invalid value for "label", label cannot be nil.')
       end
 
-      if @start_s.nil?
-        invalid_properties.push('invalid value for "start_s", start_s cannot be nil.')
-      end
-
-      if @end_s.nil?
-        invalid_properties.push('invalid value for "end_s", end_s cannot be nil.')
-      end
-
-      if @duration_s.nil?
-        invalid_properties.push('invalid value for "duration_s", duration_s cannot be nil.')
-      end
-
-      if @formatted_timestamp.nil?
-        invalid_properties.push('invalid value for "formatted_timestamp", formatted_timestamp cannot be nil.')
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -147,62 +102,29 @@ module FalaAI
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @event.nil?
-      return false if @start_s.nil?
-      return false if @end_s.nil?
-      return false if @duration_s.nil?
-      return false if @formatted_timestamp.nil?
+      return false if @label.nil?
+      return false if @name.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] event Value to be assigned
-    def event=(event)
-      if event.nil?
-        fail ArgumentError, 'event cannot be nil'
+    # @param [Object] label Value to be assigned
+    def label=(label)
+      if label.nil?
+        fail ArgumentError, 'label cannot be nil'
       end
 
-      @event = event
+      @label = label
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] start_s Value to be assigned
-    def start_s=(start_s)
-      if start_s.nil?
-        fail ArgumentError, 'start_s cannot be nil'
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
       end
 
-      @start_s = start_s
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] end_s Value to be assigned
-    def end_s=(end_s)
-      if end_s.nil?
-        fail ArgumentError, 'end_s cannot be nil'
-      end
-
-      @end_s = end_s
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] duration_s Value to be assigned
-    def duration_s=(duration_s)
-      if duration_s.nil?
-        fail ArgumentError, 'duration_s cannot be nil'
-      end
-
-      @duration_s = duration_s
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] formatted_timestamp Value to be assigned
-    def formatted_timestamp=(formatted_timestamp)
-      if formatted_timestamp.nil?
-        fail ArgumentError, 'formatted_timestamp cannot be nil'
-      end
-
-      @formatted_timestamp = formatted_timestamp
+      @name = name
     end
 
     # Checks equality by comparing each attribute.
@@ -210,11 +132,8 @@ module FalaAI
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          event == o.event &&
-          start_s == o.start_s &&
-          end_s == o.end_s &&
-          duration_s == o.duration_s &&
-          formatted_timestamp == o.formatted_timestamp
+          label == o.label &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -226,7 +145,7 @@ module FalaAI
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [event, start_s, end_s, duration_s, formatted_timestamp].hash
+      [label, name].hash
     end
 
     # Builds the object from hash

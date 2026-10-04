@@ -14,30 +14,26 @@ require 'date'
 require 'time'
 
 module FalaAI
-  class AudioEvent < ApiModelBase
-    # Type of identified audio event. Ex: [riso], [suspiro], [pausa], [tosse]
-    attr_accessor :event
+  class WhatsappUsage < ApiModelBase
+    # Number of conversations returned
+    attr_accessor :conversations
 
-    # Start time of audio event in seconds
-    attr_accessor :start_s
+    # Total characters across conversations
+    attr_accessor :characters
 
-    # End time of audio event in seconds
-    attr_accessor :end_s
+    # Credits consumed (1 per conversation)
+    attr_accessor :credits_consumed
 
-    # Event duration in seconds
-    attr_accessor :duration_s
-
-    # Formatted timestamp HH:MM:SS.mmm of event start
-    attr_accessor :formatted_timestamp
+    # Total processing time in milliseconds
+    attr_accessor :processing_ms
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'event' => :'event',
-        :'start_s' => :'start_s',
-        :'end_s' => :'end_s',
-        :'duration_s' => :'duration_s',
-        :'formatted_timestamp' => :'formatted_timestamp'
+        :'conversations' => :'conversations',
+        :'characters' => :'characters',
+        :'credits_consumed' => :'credits_consumed',
+        :'processing_ms' => :'processing_ms'
       }
     end
 
@@ -54,11 +50,10 @@ module FalaAI
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'event' => :'String',
-        :'start_s' => :'Float',
-        :'end_s' => :'Float',
-        :'duration_s' => :'Float',
-        :'formatted_timestamp' => :'String'
+        :'conversations' => :'Integer',
+        :'characters' => :'Integer',
+        :'credits_consumed' => :'Integer',
+        :'processing_ms' => :'Integer'
       }
     end
 
@@ -72,46 +67,40 @@ module FalaAI
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `FalaAI::AudioEvent` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `FalaAI::WhatsappUsage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `FalaAI::AudioEvent`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `FalaAI::WhatsappUsage`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'event')
-        self.event = attributes[:'event']
+      if attributes.key?(:'conversations')
+        self.conversations = attributes[:'conversations']
       else
-        self.event = nil
+        self.conversations = nil
       end
 
-      if attributes.key?(:'start_s')
-        self.start_s = attributes[:'start_s']
+      if attributes.key?(:'characters')
+        self.characters = attributes[:'characters']
       else
-        self.start_s = nil
+        self.characters = nil
       end
 
-      if attributes.key?(:'end_s')
-        self.end_s = attributes[:'end_s']
+      if attributes.key?(:'credits_consumed')
+        self.credits_consumed = attributes[:'credits_consumed']
       else
-        self.end_s = nil
+        self.credits_consumed = nil
       end
 
-      if attributes.key?(:'duration_s')
-        self.duration_s = attributes[:'duration_s']
+      if attributes.key?(:'processing_ms')
+        self.processing_ms = attributes[:'processing_ms']
       else
-        self.duration_s = nil
-      end
-
-      if attributes.key?(:'formatted_timestamp')
-        self.formatted_timestamp = attributes[:'formatted_timestamp']
-      else
-        self.formatted_timestamp = nil
+        self.processing_ms = nil
       end
     end
 
@@ -120,24 +109,20 @@ module FalaAI
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @event.nil?
-        invalid_properties.push('invalid value for "event", event cannot be nil.')
+      if @conversations.nil?
+        invalid_properties.push('invalid value for "conversations", conversations cannot be nil.')
       end
 
-      if @start_s.nil?
-        invalid_properties.push('invalid value for "start_s", start_s cannot be nil.')
+      if @characters.nil?
+        invalid_properties.push('invalid value for "characters", characters cannot be nil.')
       end
 
-      if @end_s.nil?
-        invalid_properties.push('invalid value for "end_s", end_s cannot be nil.')
+      if @credits_consumed.nil?
+        invalid_properties.push('invalid value for "credits_consumed", credits_consumed cannot be nil.')
       end
 
-      if @duration_s.nil?
-        invalid_properties.push('invalid value for "duration_s", duration_s cannot be nil.')
-      end
-
-      if @formatted_timestamp.nil?
-        invalid_properties.push('invalid value for "formatted_timestamp", formatted_timestamp cannot be nil.')
+      if @processing_ms.nil?
+        invalid_properties.push('invalid value for "processing_ms", processing_ms cannot be nil.')
       end
 
       invalid_properties
@@ -147,62 +132,51 @@ module FalaAI
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @event.nil?
-      return false if @start_s.nil?
-      return false if @end_s.nil?
-      return false if @duration_s.nil?
-      return false if @formatted_timestamp.nil?
+      return false if @conversations.nil?
+      return false if @characters.nil?
+      return false if @credits_consumed.nil?
+      return false if @processing_ms.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] event Value to be assigned
-    def event=(event)
-      if event.nil?
-        fail ArgumentError, 'event cannot be nil'
+    # @param [Object] conversations Value to be assigned
+    def conversations=(conversations)
+      if conversations.nil?
+        fail ArgumentError, 'conversations cannot be nil'
       end
 
-      @event = event
+      @conversations = conversations
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] start_s Value to be assigned
-    def start_s=(start_s)
-      if start_s.nil?
-        fail ArgumentError, 'start_s cannot be nil'
+    # @param [Object] characters Value to be assigned
+    def characters=(characters)
+      if characters.nil?
+        fail ArgumentError, 'characters cannot be nil'
       end
 
-      @start_s = start_s
+      @characters = characters
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] end_s Value to be assigned
-    def end_s=(end_s)
-      if end_s.nil?
-        fail ArgumentError, 'end_s cannot be nil'
+    # @param [Object] credits_consumed Value to be assigned
+    def credits_consumed=(credits_consumed)
+      if credits_consumed.nil?
+        fail ArgumentError, 'credits_consumed cannot be nil'
       end
 
-      @end_s = end_s
+      @credits_consumed = credits_consumed
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] duration_s Value to be assigned
-    def duration_s=(duration_s)
-      if duration_s.nil?
-        fail ArgumentError, 'duration_s cannot be nil'
+    # @param [Object] processing_ms Value to be assigned
+    def processing_ms=(processing_ms)
+      if processing_ms.nil?
+        fail ArgumentError, 'processing_ms cannot be nil'
       end
 
-      @duration_s = duration_s
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] formatted_timestamp Value to be assigned
-    def formatted_timestamp=(formatted_timestamp)
-      if formatted_timestamp.nil?
-        fail ArgumentError, 'formatted_timestamp cannot be nil'
-      end
-
-      @formatted_timestamp = formatted_timestamp
+      @processing_ms = processing_ms
     end
 
     # Checks equality by comparing each attribute.
@@ -210,11 +184,10 @@ module FalaAI
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          event == o.event &&
-          start_s == o.start_s &&
-          end_s == o.end_s &&
-          duration_s == o.duration_s &&
-          formatted_timestamp == o.formatted_timestamp
+          conversations == o.conversations &&
+          characters == o.characters &&
+          credits_consumed == o.credits_consumed &&
+          processing_ms == o.processing_ms
     end
 
     # @see the `==` method
@@ -226,7 +199,7 @@ module FalaAI
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [event, start_s, end_s, duration_s, formatted_timestamp].hash
+      [conversations, characters, credits_consumed, processing_ms].hash
     end
 
     # Builds the object from hash
