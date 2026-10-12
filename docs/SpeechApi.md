@@ -29,7 +29,7 @@ file = File.new('/path/to/some/file') # File |
 opts = {
   model: 'model_example', # String | 
   language: 'language_example', # String | 
-  client_reference_id: 'client_reference_id_example' # String | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9._:-]. Not idempotency.
+  client_reference_id: 'client_reference_id_example' # String | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9 _/:.-], max 60 chars. Not idempotency.
 }
 
 begin
@@ -65,8 +65,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **file** | **File** |  |  |
 | **model** | **String** |  | [optional][default to &#39;falaai-transcribe-1&#39;] |
-| **language** | **String** |  | [optional][default to &#39;pt&#39;] |
-| **client_reference_id** | **String** | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9._:-]. Not idempotency. | [optional] |
+| **language** | **String** |  | [optional] |
+| **client_reference_id** | **String** | Optional client-supplied ID echoed verbatim in the response. Use to correlate/sync with your system. Accepted charset: [A-Za-z0-9 _/:.-], max 60 chars. Not idempotency. | [optional] |
 
 ### Return type
 

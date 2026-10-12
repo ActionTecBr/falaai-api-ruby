@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **interlocutor** | **String** | Exact identifier as used in dialog (e.g. &#39;Interlocutor 1&#39;, &#39;Antonio&#39;) |  |
 | **name** | **String** | Participant name (humanizes report, does not affect logic) | [optional] |
-| **role** | **String** | Role: agent (human operator), client (customer), bot (IVR/AI) |  |
+| **role** | **String** | Role: agent (human operator), client (customer), bot (IVR/AI). Required for risk audit. |  |
 
 ## Example
 

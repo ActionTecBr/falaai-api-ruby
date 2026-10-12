@@ -15,6 +15,6 @@ transcription, _status = FalaAI::SpeechApi.new(client).create_transcription_v1_a
   audio,
     model: "falaai-transcribe-1",
     language: "pt",
-    client_reference_id: "call_202609271408"
+    client_reference_id: "20260927140800000-aud"
 )
 puts JSON.pretty_generate(transcription.to_hash)

@@ -10,6 +10,7 @@
 | **analysis** | [**DiagnosticAnalysisMap**](DiagnosticAnalysisMap.md) | The 6 conversation analyses (5 + participants) |  |
 | **usage** | [**DiagnosticUsage**](DiagnosticUsage.md) | Usage and processing information |  |
 | **client_reference_id** | **String** | Client-supplied ID echoed verbatim (if provided in request) | [optional] |
+| **html_report** | **String** | Visual HTML report of the diagnosis (base64 gzip). Only present when &#39;dialog&#39; is provided; null for text-only requests. | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = FalaAI::DiagnosticResponse.new(
   object: null,
   analysis: null,
   usage: null,
-  client_reference_id: null
+  client_reference_id: null,
+  html_report: null
 )
 ```
 

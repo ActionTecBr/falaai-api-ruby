@@ -26,7 +26,7 @@ FalaAI.configure do |config|
 end
 
 api_instance = FalaAI::AnalysisApi.new
-diagnostic_request = FalaAI::DiagnosticRequest.new({language: 'language_example', duration_seconds: 3.56}) # DiagnosticRequest | 
+diagnostic_request = FalaAI::DiagnosticRequest.new({language: 'language_example'}) # DiagnosticRequest | 
 
 begin
   # Analyze a call transcript — 5 parallel analyses
@@ -93,7 +93,7 @@ FalaAI.configure do |config|
 end
 
 api_instance = FalaAI::AnalysisApi.new
-risk_audit_request = FalaAI::RiskAuditRequest.new({duration_seconds: 3.56, language: 'language_example', response_language: 'response_language_example'}) # RiskAuditRequest | 
+risk_audit_request = FalaAI::RiskAuditRequest.new({dialog: 'dialog_example', duration_seconds: 3.56, language: 'language_example', response_language: 'response_language_example'}) # RiskAuditRequest | 
 
 begin
   # Compliance Risk Audit — conversation compliance analysis

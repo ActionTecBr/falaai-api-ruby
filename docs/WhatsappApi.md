@@ -33,7 +33,8 @@ date_format = 'date_format_example' # String |
 opts = {
   gap_minutes: 8.14, # Float | 
   min_messages: 56, # Integer | 
-  chars_per_minute: 8.14, # Float | 
+  voice_note: true, # Boolean | Transcrever mensagens de voz/video gravadas na hora?
+  expression: true, # Boolean | Descrever expressoes visuais (figurinha/GIF/imagem)?
   client_reference_id: 'client_reference_id_example' # String | 
 }
 
@@ -75,7 +76,8 @@ end
 | **date_format** | **String** |  |  |
 | **gap_minutes** | **Float** |  | [optional][default to 720] |
 | **min_messages** | **Integer** |  | [optional][default to 2] |
-| **chars_per_minute** | **Float** |  | [optional][default to 800] |
+| **voice_note** | **Boolean** | Transcrever mensagens de voz/video gravadas na hora? | [optional][default to true] |
+| **expression** | **Boolean** | Descrever expressoes visuais (figurinha/GIF/imagem)? | [optional][default to true] |
 | **client_reference_id** | **String** |  | [optional] |
 
 ### Return type
