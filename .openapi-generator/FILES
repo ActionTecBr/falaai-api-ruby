@@ -32,6 +32,7 @@ docs/LocationInner.md
 docs/MessageResponse.md
 docs/Participant.md
 docs/ParticipantDiagnostic.md
+docs/ResponseExtractConversationsV1WhatsappExtractconversationsPost.md
 docs/RiskAuditAnalysisV2.md
 docs/RiskAuditAppliedActionV2.md
 docs/RiskAuditAudioEventModelV2.md
@@ -72,6 +73,13 @@ docs/WhatsappApi.md
 docs/WhatsappConversation.md
 docs/WhatsappConversationsResponse.md
 docs/WhatsappMeta.md
+docs/WhatsappPreviewItem.md
+docs/WhatsappPreviewItemBreakdown.md
+docs/WhatsappPreviewItemCredits.md
+docs/WhatsappPreviewItemMedia.md
+docs/WhatsappPreviewParams.md
+docs/WhatsappPreviewResponse.md
+docs/WhatsappPreviewWindow.md
 docs/WhatsappSpeaker.md
 docs/WhatsappUsage.md
 falaai-api.gemspec
@@ -111,6 +119,7 @@ lib/falaai-api/models/location_inner.rb
 lib/falaai-api/models/message_response.rb
 lib/falaai-api/models/participant.rb
 lib/falaai-api/models/participant_diagnostic.rb
+lib/falaai-api/models/response_extract_conversations_v1_whatsapp_extractconversations_post.rb
 lib/falaai-api/models/risk_audit_analysis_v2.rb
 lib/falaai-api/models/risk_audit_applied_action_v2.rb
 lib/falaai-api/models/risk_audit_audio_event_model_v2.rb
@@ -146,6 +155,13 @@ lib/falaai-api/models/webhook_list_response.rb
 lib/falaai-api/models/whatsapp_conversation.rb
 lib/falaai-api/models/whatsapp_conversations_response.rb
 lib/falaai-api/models/whatsapp_meta.rb
+lib/falaai-api/models/whatsapp_preview_item.rb
+lib/falaai-api/models/whatsapp_preview_item_breakdown.rb
+lib/falaai-api/models/whatsapp_preview_item_credits.rb
+lib/falaai-api/models/whatsapp_preview_item_media.rb
+lib/falaai-api/models/whatsapp_preview_params.rb
+lib/falaai-api/models/whatsapp_preview_response.rb
+lib/falaai-api/models/whatsapp_preview_window.rb
 lib/falaai-api/models/whatsapp_speaker.rb
 lib/falaai-api/models/whatsapp_usage.rb
 lib/falaai-api/version.rb
@@ -179,6 +195,7 @@ spec/models/location_inner_spec.rb
 spec/models/message_response_spec.rb
 spec/models/participant_diagnostic_spec.rb
 spec/models/participant_spec.rb
+spec/models/response_extract_conversations_v1_whatsapp_extractconversations_post_spec.rb
 spec/models/risk_audit_analysis_v2_spec.rb
 spec/models/risk_audit_applied_action_v2_spec.rb
 spec/models/risk_audit_audio_event_model_v2_spec.rb
@@ -214,6 +231,13 @@ spec/models/webhook_list_response_spec.rb
 spec/models/whatsapp_conversation_spec.rb
 spec/models/whatsapp_conversations_response_spec.rb
 spec/models/whatsapp_meta_spec.rb
+spec/models/whatsapp_preview_item_breakdown_spec.rb
+spec/models/whatsapp_preview_item_credits_spec.rb
+spec/models/whatsapp_preview_item_media_spec.rb
+spec/models/whatsapp_preview_item_spec.rb
+spec/models/whatsapp_preview_params_spec.rb
+spec/models/whatsapp_preview_response_spec.rb
+spec/models/whatsapp_preview_window_spec.rb
 spec/models/whatsapp_speaker_spec.rb
 spec/models/whatsapp_usage_spec.rb
 spec/spec_helper.rb

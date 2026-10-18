@@ -21,6 +21,7 @@
 | **conversations_selected** | **Integer** | Final conversations returned |  |
 | **voice_note** | **Boolean** | Voice/video medias were transcribed |  |
 | **expression** | **Boolean** | Visual expressions were described |  |
+| **windows** | **Integer** | Explicit windows used (0 &#x3D; simple start/end range) |  |
 
 ## Example
 
@@ -44,7 +45,8 @@ instance = FalaAI::WhatsappMeta.new(
   monologues_dropped: null,
   conversations_selected: null,
   voice_note: null,
-  expression: null
+  expression: null,
+  windows: null
 )
 ```
 

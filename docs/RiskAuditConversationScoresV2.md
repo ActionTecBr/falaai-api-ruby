@@ -12,7 +12,6 @@
 | **positive_negative_ratio** | **Object** | Positive:negative ratio | [optional] |
 | **global_risk_severity** | **String** | Global risk severity code | [optional] |
 | **global_risk_severity_label** | **String** | Global risk severity label | [optional] |
-| **global_risk_severity_color** | **String** | Global risk severity color | [optional] |
 | **risk_likelihood_avg** | **Float** | Risk likelihood avg | [optional] |
 | **risk_impact_avg** | **Float** | Risk impact avg | [optional] |
 
@@ -30,7 +29,6 @@ instance = FalaAI::RiskAuditConversationScoresV2.new(
   positive_negative_ratio: null,
   global_risk_severity: null,
   global_risk_severity_label: null,
-  global_risk_severity_color: null,
   risk_likelihood_avg: null,
   risk_impact_avg: null
 )

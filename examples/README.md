@@ -1,9 +1,9 @@
 # sdks/ruby/examples - exemplos ruby (canonicos)
 
-@version 1.4.0 | criado: 28/09/2026 17:22 | atualizado: 12/10/2026 17:09
+@version 1.4.0 | criado: 15/10/2026 18:55 | atualizado: 18/10/2026 00:33
 
 ## O que e
-Os 4 exemplos ruby (rb) dos endpoints da API, EXPORTADOS DA LANDING PAGE (fonte unica
+Os 7 exemplos ruby (.rb) - 4 endpoints + 3 variantes do WhatsApp - EXPORTADOS DA LANDING PAGE (fonte unica
 de verdade). Nunca editados a mao.
 
 ## Fonte unica de verdade
@@ -31,18 +31,20 @@ _generate_ruby_examples.mjs (prefixo _ = ferramenta, nao exemplo)
 ## Relatorio da ultima execucao
 | Data | Modo | Resultado |
 |------|------|-----------|
-| 12/10/2026 17:09 | verificacao (--check) | OK - 5 exemplos ruby 100% conforme a landing. |
+| 18/10/2026 00:33 | exportacao | OK - 7 exemplos ruby exportados da landing. |
 
 | Arquivo | Endpoint | Status | Gerado em |
 |---------|----------|--------|-----------|
-| health.rb | GET  /v1/health | ok | 12/10/2026 15:23 |
-| transcribe.rb | POST /v1/audio/transcriptions | ok | 12/10/2026 15:23 |
-| diagnose.rb | POST /v1/analyze/diagnostic | ok | 12/10/2026 15:23 |
-| audit.rb | POST /v1/analyze/riskAudit | ok | 12/10/2026 15:23 |
-| whatsapp.rb | whatsapp.rb | ok | 12/10/2026 15:23 |
+| health.rb | GET  /v1/health | exportado (519 chars) | 18/10/2026 00:33 |
+| transcribe.rb | POST /v1/audio/transcriptions | exportado (906 chars) | 18/10/2026 00:33 |
+| diagnose.rb | POST /v1/analyze/diagnostic | exportado (4462 chars) | 18/10/2026 00:33 |
+| audit.rb | POST /v1/analyze/riskAudit | exportado (3276 chars) | 18/10/2026 00:33 |
+| whatsapp_preview.rb | POST /v1/whatsapp/extractConversations | exportado (1114 chars) | 18/10/2026 00:33 |
+| whatsapp_periodo.rb | POST /v1/whatsapp/extractConversations | exportado (1131 chars) | 18/10/2026 00:33 |
+| whatsapp_janelas.rb | POST /v1/whatsapp/extractConversations | exportado (1215 chars) | 18/10/2026 00:33 |
 
 ## Datas
-- Criacao:     28/09/2026 17:22
-- Atualizacao: 12/10/2026 17:09
+- Criacao:     15/10/2026 18:55
+- Atualizacao: 18/10/2026 00:33
 
 Gerado automaticamente por _generate_ruby_examples.mjs - NAO edite a mao.

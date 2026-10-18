@@ -8,8 +8,6 @@
 | **label** | **String** | Action label |  |
 | **description** | **String** | Action description |  |
 | **priority** | **String** | CRITICO/ALTO/MEDIO/BAIXO |  |
-| **color** | **String** | Color | [optional][default to &#39;&#39;] |
-| **icon** | **String** | Icon | [optional][default to &#39;&#39;] |
 | **condition** | **String** | Condition | [optional] |
 | **reason** | **String** | Reason | [optional][default to &#39;&#39;] |
 
@@ -23,8 +21,6 @@ instance = FalaAI::RiskAuditAppliedActionV2.new(
   label: null,
   description: null,
   priority: null,
-  color: null,
-  icon: null,
   condition: null,
   reason: null
 )

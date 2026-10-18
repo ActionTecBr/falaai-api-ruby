@@ -1,5 +1,5 @@
 # FLUXO DE TESTES DA SDK Ruby (gem `falaai-api`)
-@version 1.1.0 | 12/10/2026 | MANUAL — nao e regenerado pelo exportador de exemplos
+@version 1.2.0 | 2026-10-15 | v1.2.0 (15/10): 3 variantes do WhatsApp (7 exemplos) + HTML de TODO endpoint com html_report + PASSO FINAL (sync sandbox-responses);  MANUAL — nao e regenerado pelo exportador de exemplos
 SDK: `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\` (gem `falaai-api`) · Docker: imagem `ruby:3.3`
 Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (tests/e2e = MANUAL)
 
@@ -7,10 +7,10 @@ Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (t
 | # | Script / Arquivo | Path completo | Papel no fluxo |
 |---|---|---|---|
 | 1 | `run_docker.ps1` v1.0.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\tests\e2e\run_docker.ps1` | WRAPPER (PowerShell): valida gemspec + mp3 → **PASSO 0a** (sync exemplos) → Docker `ruby:3.3` (gem install) → **PASSO FINAL** (sync sandbox-responses) |
-| 2 | `run_examples.sh` v1.0.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\tests\e2e\run_examples.sh` | RUNNER (bash, roda DENTRO do container): **limpa logs antigos**, `ruby -Ilib` dos 4 exemplos, grava os logs JSON + `.html` |
+| 2 | `run_examples.sh` v1.0.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\tests\e2e\run_examples.sh` | RUNNER (bash, roda DENTRO do container): **limpa logs antigos**, `ruby -Ilib` dos 7 exemplos, grava os logs JSON + `.html` |
 | 3 | `_generate_ruby_examples.mjs` v1.4.0 | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\examples\_generate_ruby_examples.mjs` | EXPORTADOR (**PASSO 0a**, roda no HOST): re-exporta os 4 `.rb` da FONTE UNICA + **gera o README** + **copia o mp3** |
 | 4 | `sandbox-examples.ts` | `D:\ProjetoFalaAI\FalaAI\FalaAI_landing\lib\sandbox-examples.ts` | FONTE UNICA dos exemplos (8 linguagens x 4 endpoints, tokens `{{...}}`) |
-| 5 | `health.rb` · `transcribe.rb` · `diagnose.rb` · `audit.rb` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\examples\*.rb` | OS 4 EXEMPLOS GERADOS (usam o SDK Ruby: `FalaAI::Configuration` + `*Api` + `JSON.pretty_generate(obj.to_hash)`) |
+| 5 | `health.rb` · `transcribe.rb` · `diagnose.rb` · `audit.rb` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\examples\*.rb` | os 7 exemplos GERADOS (usam o SDK Ruby: `FalaAI::Configuration` + `*Api` + `JSON.pretty_generate(obj.to_hash)`) |
 | 6 | `README.md` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\examples\README.md` | manual dos exemplos (**GERADO** pelo exportador v1.4.0 — versao/data) |
 | 7 | `demo_callcenter.mp3` | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\tests\e2e\demo_callcenter.mp3` | audio do teste (1.3 MB) |
 | 8 | `logs\ruby_<endpoint>_<ts>_tst.json` (+ `.html`) | `D:\ProjetoFalaAI\FalaAI\FalaAI_api\sdks\ruby\tests\e2e\logs\` | LOGS gerados pelo runner (**limpa os antigos a cada rodada**) |
@@ -19,8 +19,8 @@ Regra de fundo: `.opencode/rules/macro/modulos/falaai-api/sdk-fonte-unica.md` (t
 
 ## Requisitos do dev (inviolaveis)
 - R-A: roda em Docker DA LINGUAGEM (`ruby:3.3`)
-- R-B: roda os 4 exemplos GERADOS (`health/transcribe/diagnose/audit.rb`) — nunca reescreve
-- R-C: LOG = request (codigo do exemplo) + response (o objeto do SDK Ruby) + `.html` da auditoria
+- R-B: roda os 7 exemplos GERADOS (`health/transcribe/diagnose/audit.rb`) — nunca reescreve
+- R-C: LOG = request (codigo do exemplo) + response (o objeto do SDK Ruby) + `.html` de todo endpoint com html_report
 - R-D: **sem chave hardcoded** no runner — a chave vem do parâmetro `-ApiKey` (o §1.10 do `COMANDOS_PUBLICACAO.md` injeta). **NUNCA** gravar chave `fai_` em arquivo.
 - R-E: **PASSO 0 antes de tudo** — exemplos sincronizados com a FONTE UNICA
 
@@ -36,7 +36,7 @@ flowchart TD
     F --> G{"stdout = JSON valido?"}
     G -- "sim" --> H["log: logs/ruby_<endpoint>_<ts>_tst.json<br/>{language, endpoint, generated_at,<br/>request = codigo Ruby, response = objeto do SDK}"]
     G -- "nao" --> I["log {response: null, error: stdout}"]
-    H --> J{"endpoint = auditoria?"}
+    H --> J{"tem html_report?"}
     I --> J
     J -- "sim" --> K["unzip html_report (base64+gzip)<br/>grava ruby_auditoria_<ts>_tst.html"]
     J -- "nao" --> E

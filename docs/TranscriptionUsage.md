@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **audio_seconds** | **Float** | Actual audio duration processed in seconds |  |
-| **credits_consumed** | **Integer** | Number of credits consumed in this request |  |
+| **credits_consumed** | **Float** | Number of credits consumed in this request |  |
 | **processing_ms** | **Integer** | Total processing time in milliseconds |  |
 
 ## Example

@@ -50,6 +50,8 @@ FALAAI_API_KEY=fai_xxxxxxxx
 
 ### 3. Transcribe a call (audio -> text)
 
+> No audio file? See **[audio help](https://falaai.action.tec.br/api/audio-help)** for accepted formats and limits.
+
 ```ruby
 require 'falaai-api'
 
@@ -95,15 +97,16 @@ client = FalaAI::ApiClient.new(config)
 analysis = FalaAI::AnalysisApi.new(client)
 
 transcript = 'Good morning, how can I help? I need to cancel my subscription.'
+dialog = "Speaker 1: [00:00:00.100 - 00:00:03.100] Good morning, how can I help?\nSpeaker 2: [00:00:03.100 - 00:00:06.200] I need to cancel my subscription."
 
 # 5 analyses in one call: summary, reason, action, topic, sentiment
 diagnostic, _status = analysis.create_diagnostic_v1_analyze_diagnostic_post_with_http_info(
   FalaAI::DiagnosticRequest.new(text: transcript, language: 'pt-BR', duration_seconds: 81.46)
 )
 
-# Compliance risk score + violations + auditable report
+# Compliance risk score + violations + auditable report (Risk Audit requires a diarized 'dialog', not 'text')
 audit, _status = analysis.create_risk_audit_v1_analyze_risk_audit_post_with_http_info(
-  FalaAI::RiskAuditRequest.new(text: transcript, language: 'pt-BR', response_language: 'pt-BR', duration_seconds: 81.46)
+  FalaAI::RiskAuditRequest.new(dialog: dialog, language: 'pt-BR', response_language: 'pt-BR', duration_seconds: 81.46)
 )
 ```
 
@@ -149,6 +152,8 @@ FalaAI is **language-independent** - integrate at **any point** of your pipeline
 
 > These are **integration examples**, not certified native integrations. Any platform can integrate through **REST / cURL** - the standard, language-independent path. Native ingestion connectors are on the roadmap.
 
+**This SDK's language (Ruby):** FalaAI is language-independent; this package targets **Ruby** backends (your target platform does not need to be built in Ruby).
+
 ## BYOT - Bring Your Own Transcription
 
 Already have speech-to-text (Whisper, Deepgram, AssemblyAI, your own)? **Skip Transcription** and send the text straight to **Diagnostic** and/or **Risk Audit**. You only pay for what you use.
@@ -171,7 +176,7 @@ Already have speech-to-text (Whisper, Deepgram, AssemblyAI, your own)? **Skip Tr
 
 ## Examples
 
-Runnable examples in [`examples/`](./examples): `health.rb`, `transcribe.rb`, `diagnose.rb`, `audit.rb`, `whatsapp.rb`.
+Runnable examples in [`examples/`](https://github.com/ActionTecBr/falaai-api-ruby/tree/main/examples): `health.rb`, `transcribe.rb`, `diagnose.rb`, `audit.rb`, `whatsapp.rb`.
 
 ## Authentication
 
@@ -203,7 +208,7 @@ end
 | Requirement | Version |
 |---|---|
 | Ruby | 2.7+ |
-| API | v1.21.54 |
+| API | v1.21.67 |
 
 ## Documentation
 
@@ -216,7 +221,7 @@ end
 
 ## Versioning
 
-Semantic versioning; the SDK version tracks the API version (`1.21.54`). See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/ActionTecBr/falaai-api-ruby/releases).
+Semantic versioning; the SDK version tracks the API version (`1.21.67`). See [CHANGELOG.md](CHANGELOG.md) and [Releases](https://github.com/ActionTecBr/falaai-api-ruby/releases).
 
 ## Security
 

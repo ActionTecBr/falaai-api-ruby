@@ -11,8 +11,6 @@
 | **blocked** | **Integer** | Blocked detections | [optional] |
 | **audio_events_used** | **Integer** | Audio events used | [optional] |
 | **audio_events_aggravated** | **Integer** | Audio events aggravated | [optional] |
-| **mac_audio_applied** | **Object** | MAC audio applied | [optional] |
-| **mvad_applied** | **Object** | MVAD applied | [optional] |
 | **total_participants** | **Integer** | Total participants | [optional] |
 | **total_agents** | **Integer** | Total agents | [optional] |
 | **total_clients** | **Integer** | Total clients | [optional] |
@@ -34,8 +32,6 @@ instance = FalaAI::RiskAuditSummaryV2.new(
   blocked: null,
   audio_events_used: null,
   audio_events_aggravated: null,
-  mac_audio_applied: null,
-  mvad_applied: null,
   total_participants: null,
   total_agents: null,
   total_clients: null,
